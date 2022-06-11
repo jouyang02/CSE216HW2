@@ -1,5 +1,5 @@
 import OpenAddressHashTable from "./OpenAddressHashTable.js";
-import { Person, Employee, Student } from "./People.js";
+import { Person, Employee, Student, Undergraduate } from "./People.js";
 
 const NUM_BINS = 5;
 const KEY_LENGTH = 8;
@@ -21,6 +21,9 @@ function addPersonToHashTable(person, hashTable) {
 
 let hashTable = new OpenAddressHashTable(NUM_BINS, KEY_LENGTH);
 
+// let testKey = hashTable.generateKey();
+// hashTable.removeValue(testKey);
+
 // DEMONSTRATE ADDING VALUES TO THE HASH TABLE, WHICH INCLUDES THE NEED TO MAKE THE HASH TABLE BIGGER
 addPersonToHashTable(new Student(hashTable.generateKey(), "George", "Harrison", 4.0), hashTable);
 addPersonToHashTable(new Employee(hashTable.generateKey(), "Paul", "McCartney", 80000), hashTable);
@@ -29,6 +32,8 @@ addPersonToHashTable(new Person(hashTable.generateKey(), "Chuck", "Berry"), hash
 addPersonToHashTable(new Student(hashTable.generateKey(), "Mick", "Jagger", 3.5), hashTable);
 addPersonToHashTable(new Student(hashTable.generateKey(), "Jimi", "Hendrix", 3.6), hashTable);
 addPersonToHashTable(new Person(hashTable.generateKey(), "Roger", "Waters"), hashTable);
+// ADD UNDERGRADUATE STUDENTS TO HASH TABLE.
+addPersonToHashTable(new Undergraduate(hashTable.generateKey(), "Johnathan", "Jin", 2.0, "U1"), hashTable);
 
 // DEMONSTRATE MAKING KEYS AND ADDING VALUES TO THE HASH TABLE    
 let jlKey = hashTable.generateKey();
@@ -54,11 +59,13 @@ hashTable.putValue(dgKey, new Student(dgKey, "Bill", "Withers", 3.4));
 printHashTable("\nAfter Changing 3 Items", hashTable);
 
 // AND DEMONSTRATE REMOVING ITEMS FROM THE BST
-hashTable.removeValue(jlKey);
-printHashTable("\nAfter Removing Otis Redding", hashTable);
+// hashTable.removeValue(jlKey);
+// printHashTable("\nAfter Removing Otis Redding", hashTable);
 
-hashTable.removeValue(cwKey);
-printHashTable("\nAfter Removing Keith Richards", hashTable);
+// hashTable.removeValue(cwKey);
+// printHashTable("\nAfter Removing Keith Richards", hashTable);
 
-hashTable.removeValue(dgKey);
-printHashTable("\nAfter Removing Bill Withers", hashTable);
+// hashTable.removeValue(dgKey);
+// printHashTable("\nAfter Removing Bill Withers", hashTable);
+
+addPersonToHashTable(new Undergraduate(hashTable.generateKey(), "Xiao", "Zheng", 1.0, "U4"), hashTable);
