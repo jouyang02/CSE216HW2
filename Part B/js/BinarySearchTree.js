@@ -36,7 +36,35 @@ export default class BinarySearchTree {
 
     // @todo - YOU MUST DEFINE THIS METHOD
     putValue(key, value) {
+        if (this.root === null){
+            this.root = new Node(key, value, null, null, null);
+            this.size = this.size + 1;
+            return;
+        }
+        this.putValueHelper(key, value, this.root);
+    }
 
+    //Helper method for putting in Value for BST
+    putValueHelper(key, value, node) {
+        if (key < node.key){
+            if (node.left === null) {
+                node.left = new Node(key, value, node, null, null);
+                this.size = this.size + 1;
+                return;
+            }else {
+                this.putValueHelper(key, value, node.left);
+            }
+        }else if (key === node.key){
+            node.data = value;
+            return;
+        }else{
+            if (node.right === null) {
+                node.right = new Node(key, value, node, null, null);
+                this.size = this.size + 1;
+            }else{
+                this.putValueHelper(key, value, node.right);
+            }
+        }
     }
 
     // @todo - YOU MUST DEFINE THIS METHOD
