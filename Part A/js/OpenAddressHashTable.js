@@ -67,7 +67,42 @@ export default class OpenAddressHashTable {
     
     // @todo - YOU MUST DEFINE THIS METHOD
     removeValue(key) { 
-        
+        let index = this.hashCode(key);
+        let count = 0;
+        while (count < this.length) {
+            let testPair = this.hashTable[index];
+            if (testPair === null || testPair === undefined) {
+                console.log("Nothing to remove");
+                return;
+            }else if (testPair.key === key) {
+                this.hashTable[index] = null;
+                this.size = this.size - 1;
+                 
+                let temp = [];
+                let counter = 0;
+                for (let i = 0; i < this.length; i++) {
+                    let item = this.hashTable[i];
+                    if (item !== null) {
+                        temp[counter] = item;
+                        counter = counter + 1;
+                    }
+                    this.hashTable[i] = null;
+                }
+                this.size = 0;
+                for (let i = 0; i < counter; i++) {
+                    let item = temp[i];
+                    let rehashKey = item.key;
+                    let rehashValue = item.value;
+                    this.putValue(rehashKey,rehashValue);
+                }
+                return;
+            }
+            index = index + 1;
+            if (index === this.length){
+                index = 0;
+            }
+            count = count + 1;
+        }  
     }
 
     // @todo - YOU MUST DEFINE THIS METHOD
