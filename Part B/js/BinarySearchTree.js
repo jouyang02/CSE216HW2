@@ -69,7 +69,32 @@ export default class BinarySearchTree {
 
     // @todo - YOU MUST DEFINE THIS METHOD
     getValue(key) {
-        return null;
+        if (this.root === null) {
+            return null;
+        }else {
+            return this.getValueHelper(key, this.root);
+        }
+    }
+
+    // Helper method for getting value out of BST
+    getValueHelper(key, node) {
+        if (key < node.key){
+            if (node.left === null){
+                console.log("Key Not Found!");
+                return null;
+            }else{
+                return this.getValueHelper(key, node.left);
+            }
+        }else if (key === node.key) {
+            return node.data;
+        }else{
+            if (node.right === null) {
+                console.log("Key Not Found!");
+                return null;
+            }else{
+                return this.getValueHelper(key, node.right);
+            }
+        }
     }
 
     // @todo - YOU MUST DEFINE THIS METHOD
