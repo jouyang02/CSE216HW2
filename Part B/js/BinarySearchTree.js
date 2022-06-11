@@ -99,7 +99,63 @@ export default class BinarySearchTree {
 
     // @todo - YOU MUST DEFINE THIS METHOD
     removeValue(key) {
+        let traveller = this.root;
+        let found = false;
+        while (!found) {
+            console.log("key: " + key + ", traveller.key: " + traveller.key + "\n");
+            if (key === traveller.key) {
+                if (traveller.left !== null) {
+                    let largestNode = traveller.left;
+                    while (largestNode.right !== null) {
+                        largestNode = largestNode.right;
+                    }
+                    traveller.key = largestNode.key;
+                    traveller.data = largestNode.data;
 
+                    if (largestNode == largestNode.parent.left) {
+                        largestNode.parent.left = largestNode.left;
+                    }else {
+                        largestNode.parent.right = largest.left;
+                    }
+                }else if (traveller.right !== null) {
+                    let smallestNode = traveller.right;
+                    while (smallestNode.left !== null) {
+                        smallestNode = smallestNode.left;
+                    }
+
+                    traveller.key = smallestNode.key;
+                    traveller.data = smallestNode.data;
+
+                    if (smallestNode == smallestNode.parent.right) {
+                        smallestNode.parent.right = smallestNode.right;
+                    }else {
+                        smallest.parent.left = smallest.right;
+                    }
+                }else {
+                    if (traveller == this.root) {
+                        this.root = null;
+                    }else if (traveller == traveller.parent.left) {
+                        traveller.parent.left = null;
+                    }else {
+                        traveller.parent.right = null;
+                    }
+                }
+                this.size = this.size - 1;
+                found = true;
+            }else if (key < traveller.key) {
+                if (traveller.left === null) {
+                    return;
+                }else {
+                    traveller = traveller.left;
+                }
+            }else {
+                if (traveller.right === null) {
+                    return;
+                }else {
+                    traveller = traveller.right;
+                }
+            }
+        }
     }
 
     toStringRecursively(traveller, level) {
