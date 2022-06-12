@@ -102,6 +102,10 @@ export default class BinarySearchTree {
         let traveller = this.root;
         let found = false;
         while (!found) {
+            if (this.root === null) {
+                console.log("Tree is Empty!")
+                return;
+            }
             console.log("key: " + key + ", traveller.key: " + traveller.key + "\n");
             if (key === traveller.key) {
                 if (traveller.left !== null) {

@@ -135,9 +135,49 @@ tree.putValue(bbKey, new Person(bbKey, "B", "B"));
 tree.putValue(aaKey, new Person(aaKey, "A", "A"));
 printBST("Current Binary Search Tree:", tree);
 
+//GET VALUE TESTS
+tree.root = null;
+//Testing to retreive value when tree is empty
+let test1 = tree.getValue(jwKey);
+console.log(test1);
+if (test1 === null) console.log(true);
+//Testing to Retrieve data of a known key in the tree
+tree.putValue(jwKey, new Person(jwKey, "John", "Wick"));
+tree.putValue(jjKey, new Student(jjKey, "Johnathan", "Jin", 3.5));
+tree.putValue(xzKey, new Student(xzKey, "Xiao", "Zheng", 3.7));
+tree.putValue(mpKey, new Employee(mpKey, "Mom", "Parent", 75000));
+tree.putValue(dpKey, new Employee(dpKey, "Dad", "Parent", 85000));
+printBST("Current Binary Search Tree:", tree);
+let test2 = tree.getValue(jjKey);
+console.log("Expecting the data of Johnathan Jin with GPA of 3.5 to be retrieved");
+console.log(test2.toString());
+//Testing to Retrieve data of a known key that is not in the tree
+console.log("Expecting null to be retrieved and print: 'Key Not Found!'");
+let test3 = tree.getValue("ABCDEFGH");
+console.log(test3);
+//Testing to retrieve the root node of the tree
+console.log("Expecting to Retrieve John Wick");
+let test4 = tree.getValue(jwKey);
+console.log(test4.toString());
+//Testing to retrieve the last item added to tree
+let test5 = tree.getValue(dpKey);
+console.log(test5.toString());
 //Ulitizing getValue to change the value of the data with a known Key. (Only works in JS due to access)
-// let a = tree.getValue(jjKey);
-// console.log(a);
-// a.gpa = 4.0;
-// printBST("Current Binary Search Tree:", tree);
+let a = tree.getValue(jjKey);
+console.log(a);
+a.gpa = 4.0;
+printBST("Current Binary Search Tree:", tree);
+
+//Remove Value Tests:
+tree.root = null;
+//Testing to remove a value when tree is empty
+console.log("Expecting to print tree is empty and does nothing");
+tree.removeValue(jjKey);
+
+tree.putValue(jwKey, new Person(jwKey, "John", "Wick"));
+tree.putValue(jjKey, new Student(jjKey, "Johnathan", "Jin", 3.5));
+tree.putValue(xzKey, new Student(xzKey, "Xiao", "Zheng", 3.7));
+tree.putValue(mpKey, new Employee(mpKey, "Mom", "Parent", 75000));
+tree.putValue(dpKey, new Employee(dpKey, "Dad", "Parent", 85000));
+printBST("Current Binary Search Tree:", tree);
 
