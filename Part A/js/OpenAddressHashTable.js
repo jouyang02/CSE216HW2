@@ -111,7 +111,6 @@ export default class OpenAddressHashTable {
         let count = 0;
         while (count < this.length){
             let testPair = this.hashTable[index];
-            console.log(testPair);
             if (testPair === null || testPair === undefined){
                 this.hashTable[index] = new KeyValuePair(key, item);
                 this.size = this.size + 1;
