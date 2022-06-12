@@ -151,5 +151,42 @@ console.log(test2.toString());
 let test3 = hashTable3.getValue(mpKey);
 console.log(test3.toString());
 
+//Test Cases for removeValue function
 
+let hashTable4 = new OpenAddressHashTable(NUM_BINS, KEY_LENGTH);
 
+hashTable4.putValue(jwKey, new Person(jwKey, "John", "Wick"));
+printHashTable("\nADDED John Wick to Hash Table", hashTable4);
+
+hashTable4.putValue(jjKey, new Student(jjKey, "Johnathan", "Jin", 3.5));
+printHashTable("\nADDED Johnathan Jin to Hash Table", hashTable4);
+
+hashTable4.putValue(xzKey, new Student(xzKey, "Xiao", "Zheng", 3.7));
+printHashTable("\nADDED Xiao Zheng to Hash Table", hashTable4);
+
+hashTable4.putValue(mpKey, new Employee(mpKey, "Mom", "Parent", 75000));
+printHashTable("\nADDED Mom Parent to Hash Table", hashTable4);
+
+hashTable4.putValue(dpKey, new Employee(dpKey, "Dad", "Parent", 85000));
+printHashTable("\nADDED Dad Parent to Hash Table", hashTable4);
+
+//Removing a key not in the hashTable
+hashTable4.removeValue("IIIIIIII");
+console.log("Nothing changed, key does not exists!");
+printHashTable("\nCurrent Hash Table:", hashTable4);
+
+//Removing a key after value of key changed.
+hashTable4.putValue(jwKey, new Undergraduate(jwKey, "Johnny", "Wiggle", 3.0, "U2"));
+printHashTable("\nChange made to Hash Table", hashTable4);
+hashTable4.removeValue(jwKey);
+console.log("Expecting item with key to be removed, even if item changed");
+printHashTable("\nCurrent Hash Table:", hashTable4);
+
+//Table is full, size is doubled, most recent item removed after just being added
+let r1Key = hashTable4.generateKey();
+let r2Key = hashTable4.generateKey();
+addPersonToHashTable(new Employee(r1Key, "Stone", "Broke", 45000), hashTable4);
+addPersonToHashTable(new Person(r2Key, "Raiden", "Shogun"), hashTable4);
+hashTable4.removeValue(r2Key);
+console.log("Expecting Raiden Shogun to be removed from hash table");
+printHashTable("\nCurrent Hash Table:", hashTable4);
