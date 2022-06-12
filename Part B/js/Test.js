@@ -20,49 +20,49 @@ function addPersonToBST(person, tree) {
 
 let tree = new BinarySearchTree(KEY_LENGTH);
 
-// // DEMONSTRATE ADDING VALUES TO THE BST, WHICH INCLUDES THE NEED TO MAKE THE BST BIGGER
-// addPersonToBST(new Student(tree.generateKey(), "George", "Harrison", 4.0), tree);
-// addPersonToBST(new Employee(tree.generateKey(), "Paul", "McCartney", 80000), tree);
-// addPersonToBST(new Employee(tree.generateKey(), "Ringo", "Starr", 40000), tree);
-// addPersonToBST(new Person(tree.generateKey(), "Chuck", "Berry"), tree);
-// addPersonToBST(new Student(tree.generateKey(), "Mick", "Jagger", 3.5), tree);
-// addPersonToBST(new Student(tree.generateKey(), "Jimi", "Hendrix", 3.6), tree);
-// addPersonToBST(new Person(tree.generateKey(), "Roger", "Waters"), tree);
+// DEMONSTRATE ADDING VALUES TO THE BST, WHICH INCLUDES THE NEED TO MAKE THE BST BIGGER
+addPersonToBST(new Student(tree.generateKey(), "George", "Harrison", 4.0), tree);
+addPersonToBST(new Employee(tree.generateKey(), "Paul", "McCartney", 80000), tree);
+addPersonToBST(new Employee(tree.generateKey(), "Ringo", "Starr", 40000), tree);
+addPersonToBST(new Person(tree.generateKey(), "Chuck", "Berry"), tree);
+addPersonToBST(new Student(tree.generateKey(), "Mick", "Jagger", 3.5), tree);
+addPersonToBST(new Student(tree.generateKey(), "Jimi", "Hendrix", 3.6), tree);
+addPersonToBST(new Person(tree.generateKey(), "Roger", "Waters"), tree);
 
-// // DEMONSTRATE MAKING KEYS AND ADDING VALUES TO THE BST    
-// let jlKey = tree.generateKey();
-// tree.putValue(jlKey, new Student(jlKey, "John", "Lennon", 3.8));
-// let cwKey = tree.generateKey();
-// tree.putValue(cwKey, new Student(cwKey, "Charlie", "Watts", 3.1));
-// let dgKey = tree.generateKey();
-// tree.putValue(dgKey, new Employee(dgKey, "David", "Gilmour", 120000));
-// printBST("\nAfter Changing 3 Items", tree);
+// DEMONSTRATE MAKING KEYS AND ADDING VALUES TO THE BST    
+let jlKey = tree.generateKey();
+tree.putValue(jlKey, new Student(jlKey, "John", "Lennon", 3.8));
+let cwKey = tree.generateKey();
+tree.putValue(cwKey, new Student(cwKey, "Charlie", "Watts", 3.1));
+let dgKey = tree.generateKey();
+tree.putValue(dgKey, new Employee(dgKey, "David", "Gilmour", 120000));
+printBST("\nAfter Changing 3 Items", tree);
 
-// // DEMONSTRATE GETTING VALUES FROM THE BST
-// let p = tree.getValue(jlKey);
-// console.log("\nget " + jlKey + ": " + p.toString() + "\n");
-// p = tree.getValue(cwKey);
-// console.log("\nget " + cwKey + ": " + p.toString() + "\n");
-// p = tree.getValue(dgKey);
-// console.log("\nget " + dgKey + ": " + p.toString() + "\n");
-// p = tree.getValue("AAAAAAAA");
-// console.log(p);
+// DEMONSTRATE GETTING VALUES FROM THE BST
+let p = tree.getValue(jlKey);
+console.log("\nget " + jlKey + ": " + p.toString() + "\n");
+p = tree.getValue(cwKey);
+console.log("\nget " + cwKey + ": " + p.toString() + "\n");
+p = tree.getValue(dgKey);
+console.log("\nget " + dgKey + ": " + p.toString() + "\n");
+p = tree.getValue("AAAAAAAA");
+console.log(p);
 
-// // NOW LET'S TRY REPLACING THE DATA IN THE ABOVE THREE
-// tree.putValue(jlKey, new Student(jlKey, "Otis", "Redding", 3.5));
-// tree.putValue(cwKey, new Student(cwKey, "Keith", "Richards", 3.1));
-// tree.putValue(dgKey, new Student(dgKey, "Bill", "Withers", 3.4));
-// printBST("\nAfter Changing 3 Items", tree);
+// NOW LET'S TRY REPLACING THE DATA IN THE ABOVE THREE
+tree.putValue(jlKey, new Student(jlKey, "Otis", "Redding", 3.5));
+tree.putValue(cwKey, new Student(cwKey, "Keith", "Richards", 3.1));
+tree.putValue(dgKey, new Student(dgKey, "Bill", "Withers", 3.4));
+printBST("\nAfter Changing 3 Items", tree);
 
-// // AND DEMONSTRATE REMOVING ITEMS FROM THE BST
-// tree.removeValue(jlKey);
-// printBST("\nAfter Removing Otis Redding", tree);
+// AND DEMONSTRATE REMOVING ITEMS FROM THE BST
+tree.removeValue(jlKey);
+printBST("\nAfter Removing Otis Redding", tree);
 
-// tree.removeValue(cwKey);
-// printBST("\nAfter Removing Keith Richards", tree);
+tree.removeValue(cwKey);
+printBST("\nAfter Removing Keith Richards", tree);
 
-// tree.removeValue(dgKey);
-// printBST("\nAfter Removing Bill Withers", tree);
+tree.removeValue(dgKey);
+printBST("\nAfter Removing Bill Withers", tree);
 
 // My Test Cases:
 
@@ -180,4 +180,79 @@ tree.putValue(xzKey, new Student(xzKey, "Xiao", "Zheng", 3.7));
 tree.putValue(mpKey, new Employee(mpKey, "Mom", "Parent", 75000));
 tree.putValue(dpKey, new Employee(dpKey, "Dad", "Parent", 85000));
 printBST("Current Binary Search Tree:", tree);
+//Testing to remove a key that does not exist in the BST
+tree.removeValue(aaKey);
+console.log("Expected the printed BST to maintain the same as the original tree")
+printBST("Current Binary Search Tree:", tree);
+// Testing to remove a key that exist in the BST
+tree.removeValue(xzKey);
+console.log("Expecting Xiao Zheng GPA 3.7 to be removed");
+printBST("Current Binary Search Tree:", tree);
+// Reset Tree
+tree.root = null;
+tree.putValue(jwKey, new Person(jwKey, "John", "Wick"));
+tree.putValue(jjKey, new Student(jjKey, "Johnathan", "Jin", 3.5));
+tree.putValue(xzKey, new Student(xzKey, "Xiao", "Zheng", 3.7));
+tree.putValue(mpKey, new Employee(mpKey, "Mom", "Parent", 75000));
+tree.putValue(dpKey, new Employee(dpKey, "Dad", "Parent", 85000));
+printBST("Current Binary Search Tree:", tree);
+// Removing a leaf node of the BST (No left or Right child)
+tree.removeValue(dpKey);
+printBST("Current Binary Search Tree:", tree);
+//Rebuilding a new tree
+let tree2 = new BinarySearchTree(KEY_LENGTH);
+tree2.putValue(ddKey, new Person(ddKey, "D", "D"));
+tree2.putValue(bbKey, new Person(bbKey, "B", "B"));
+tree2.putValue(ffKey, new Person(ffKey, "F", "F"));
+tree2.putValue(aaKey, new Person(aaKey, "A", "A"));
+tree2.putValue(ccKey, new Person(ccKey, "C", "C"));
+tree2.putValue(eeKey, new Person(eeKey, "E", "E"));
+tree2.putValue(ggKey, new Person(ggKey, "G", "G"));
+printBST("Current Binary Search Tree:", tree2);
+//Removing a child node of the BST
+tree2.removeValue(ggKey);
+console.log("Expecting the right node of key 'FFFFFFFF' to be removed");
+printBST("Current Binary Search Tree:", tree2);
+//Removing a parent node of the BST with 1 child
+tree2.removeValue(ffKey);
+console.log("Expecting node with key 'FFFFFFFF' to be removed and key 'EEEEEEEE' become the new node to right of D");
+printBST("Current Binary Search Tree:", tree2);
+//Removing a parent node of the BST with 2 children node of the left subtree
+tree2.removeValue(bbKey);
+console.log("Expecting node with key 'BBBBBBBB' to be removed and 'AAAAAAAA' to be the new node with right child of 'CCCCCCCC'");
+printBST("Current Binary Search Tree:", tree2);
+//RESET TREE
+tree2.root = null;
+tree2.putValue(ddKey, new Person(ddKey, "D", "D"));
+tree2.putValue(bbKey, new Person(bbKey, "B", "B"));
+tree2.putValue(ffKey, new Person(ffKey, "F", "F"));
+tree2.putValue(aaKey, new Person(aaKey, "A", "A"));
+tree2.putValue(ccKey, new Person(ccKey, "C", "C"));
+tree2.putValue(eeKey, new Person(eeKey, "E", "E"));
+tree2.putValue(ggKey, new Person(ggKey, "G", "G"));
+printBST("Current Binary Search Tree:", tree2);
+//Removing a parent node of the BST with 2 children node of the right subtree
+tree2.removeValue(ffKey);
+console.log("Remove 'FFFFFFFF' with 'EEEEEEEE' and right child of 'GGGGGGGG'");
+printBST("Current Binary Search Tree:", tree2);
+//RESET TREE
+tree2.root = null;
+tree2.putValue(ddKey, new Person(ddKey, "D", "D"));
+tree2.putValue(bbKey, new Person(bbKey, "B", "B"));
+tree2.putValue(ffKey, new Person(ffKey, "F", "F"));
+tree2.putValue(aaKey, new Person(aaKey, "A", "A"));
+tree2.putValue(ccKey, new Person(ccKey, "C", "C"));
+tree2.putValue(eeKey, new Person(eeKey, "E", "E"));
+tree2.putValue(ggKey, new Person(ggKey, "G", "G"));
+printBST("Current Binary Search Tree:", tree2);
+//REMOVING THE root node
+tree2.removeValue(ddKey);
+console.log("Expecting root node to be removed and replaced with the largest node of the sub left tree");
+printBST("Current Binary Search Tree:", tree2);
+//Removing the right sub tree after root is removed
+tree2.removeValue(ffKey);
+console.log("Expecting the node to be removed and replaced with the left root");
+printBST("Current Binary Search Tree:", tree2);
+
+
 

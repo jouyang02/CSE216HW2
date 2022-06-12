@@ -119,7 +119,7 @@ export default class BinarySearchTree {
                     if (largestNode == largestNode.parent.left) {
                         largestNode.parent.left = largestNode.left;
                     }else {
-                        largestNode.parent.right = largest.left;
+                        largestNode.parent.right = largestNode.left;
                     }
                 }else if (traveller.right !== null) {
                     let smallestNode = traveller.right;
